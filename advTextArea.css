@@ -1,0 +1,57 @@
+.advTextAreaDiv {
+    display: inline-block;
+}
+
+.advTextArea {
+    width: 100%;
+    height: 22px;
+    line-height: 22px;
+    border: 1px transparent solid;
+    padding-left: 5px;
+    padding-right: 5px;
+    background: transparent;
+    font-size: 14px;
+    font-family: Courier;
+    overflow: hidden;
+    resize: none;
+}
+
+.advTextArea:hover {
+    border: 1px lightgray solid;
+}
+
+.advTextArea:focus {
+    outline: none;
+    border: 1px darkgray solid;
+}
+
+.advTextAreaBackground {
+    position: absolute;
+    margin-top: 3px;
+    font-size: 14px;
+    margin-left: 6px;
+    font-family: Courier;
+    color: gray;
+    z-index: -1;
+}
+
+/* IE hack */
+.advTextAreaBackground {
+    margin-top: 5px\9;
+}
+
+/* FF hack */
+@
+-moz-document url-prefix () { .advTextAreaBackground { margin-top:3px;
+    margin-left: 7px;
+}
+
+}
+
+/* Opera hack */
+@media all and (-webkit-min-device-pixel-ratio:10000) , not all and
+    (-webkit-min-device-pixel-ratio:0) {
+    head ~body .aadvTextAreaBackground {
+        margin-top: 5px;
+    }
+}
