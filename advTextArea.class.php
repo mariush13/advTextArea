@@ -31,7 +31,7 @@
  * Replace comment with your code to handle save advInput
  * value using AJAX
  *
- * TODO js code improve
+ * TODO add save button
  *
  */
 

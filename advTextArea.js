@@ -55,7 +55,6 @@ function advTextArea(saveFunction) {
     
     function advTextAreaFocus(advTextArea) {
         if (advTextArea.value == $('#advTextAreaBackground'+advTextArea.id).html().replace('<br>', '\n')) {
-           // $('#advTextAreaBackground' + advTextArea.id).html(advTextArea.defaultValue);
             advTextArea.value = '';
             $('#advTextAreaBackground'+advTextArea.id).show();
         }
@@ -66,7 +65,6 @@ function advTextArea(saveFunction) {
             $('#advTextAreaBackground'+advTextArea.id).hide();
         }
         if (advTextArea.value == '') {
-            advTextArea.value = $('#advTextAreaBackground'+advTextArea.id).html().replace('<br>', '\n');
             $('#advTextAreaBackground'+advTextArea.id).show();
         }
     }
@@ -86,35 +84,14 @@ function advTextArea(saveFunction) {
     }
 
     function advTextAreaSetMinSize() {
-        $('.advTextAreaDiv').css(
-                'width',
-                function() {
-                    return advTextAreaChangeWidth($(this).children('.advTextArea')[0])+'px';
-                 //   return $(this).children('.advTextArea')[0].defaultValue.length
-                 //           * 8 + 30 + 'px';
-                });
-        $('.advTextAreaDiv').css(
-                'min-width',
-                function() {
-                    return advTextAreaChangeWidth($(this).children('.advTextArea')[0])+'px';
-                   // return $(this).children('.advTextArea')[0].defaultValue.length
-                  //          * 8 + 30 + 'px';
-                });
-        $('.advTextAreaDiv').css(
-                'height',
-                function() {
-                    return advTextAreaChangeHeight($(this).children('.advTextArea')[0])+'px';
-                 //   return $(this).children('.advTextArea')[0].defaultValue.length
-                 //           * 8 + 30 + 'px';
-                });
-        $('.advTextAreaDiv').css(
-                'min-height',
-                function() {
-                    return advTextAreaChangeHeight($(this).children('.advTextArea')[0])+'px';
-                   // return $(this).children('.advTextArea')[0].defaultValue.length
-                  //          * 8 + 30 + 'px';
-                });
-
+        $('.advTextArea').each(function(){
+           $(this).css({
+               'width' : advTextAreaChangeWidth($(this)[0]),
+               'min-width' : advTextAreaChangeWidth($(this)[0]),
+               'height' : advTextAreaChangeHeight($(this)[0]),
+               'min-height' : advTextAreaChangeHeight($(this)[0])
+           }) 
+        });
     }
 
     function saveAdvTextArea(advTextArea) {
