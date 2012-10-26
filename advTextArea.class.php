@@ -2,7 +2,7 @@
 
 /*
  * advTextArea by Mariush
- * version 1.1.0
+ * version 0.8.0
  *
  * Required jQuery!
  *
@@ -31,7 +31,7 @@
  * Replace comment with your code to handle save advInput
  * value using AJAX
  *
- * TODO js code
+ * TODO js code improve
  *
  */
 
@@ -54,7 +54,8 @@ class advTextArea {
     }
 
     public function show() {
-        $ret = '<div class="advTextAreaDiv" id="advTextAreaDiv'.$this->ID.'"><div class="advTextAreaBackground" id="advTextAreaBackground'.$this->ID.'"></div>';
+        $ret = '<div class="advTextAreaDiv" id="advTextAreaDiv'.$this->ID.'">';
+        $ret .= '<div class="advTextAreaBackground" id="advTextAreaBackground'.$this->ID.'">'.str_replace('\n','<br>',$this->Value).'</div>';
         $ret .= '<textarea class="advTextArea';
         foreach ($this->Class as $Class) {
             $ret .= ' '.$Class;
