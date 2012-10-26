@@ -2,7 +2,7 @@
 
 /*
  * advTextArea by Mariush
- * version 0.8.0
+ * version 0.9.0
  *
  * Required jQuery!
  *
@@ -31,7 +31,7 @@
  * Replace comment with your code to handle save advInput
  * value using AJAX
  *
- * TODO add save button
+ * TODO improve css and sizing
  *
  */
 
@@ -67,7 +67,9 @@ class advTextArea {
         }
         $ret .= '>';
         $ret .= ($this->Value) ? $this->Value : '';
-        $ret .= '</textarea></div>';
+        $ret .= '</textarea>';
+        $ret .= '<div class="advTextAreaSave" id="advTextAreaSave'.$this->ID.'">zapisz</div>';
+        $ret .= '</div>';
         return $ret;
     }
 }

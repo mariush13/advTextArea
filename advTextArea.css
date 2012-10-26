@@ -35,6 +35,12 @@
     z-index: -1;
 }
 
+.advTextAreaSave {
+    display: none;    
+    position: relative;
+    top: -10px;
+}       
+
 /* IE hack */
 .advTextAreaBackground {
     margin-top: 5px\9;

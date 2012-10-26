@@ -1,17 +1,14 @@
 function advTextArea(saveFunction) {
-
+    
     $(document).ready(function() {
-        
-       
-
         $('.advTextArea').blur(function() {
             advTextAreaBlur($(this)[0]);
         });
-
+        
         $('.advTextArea').focus(function() {
             advTextAreaFocus($(this)[0]);
         });
-
+        
         $('.advTextArea').keydown(function(event) {
             if (event.which == 13) {
                 advTextAreaChangeHeight($(this)[0],event);               
@@ -19,7 +16,7 @@ function advTextArea(saveFunction) {
             advTextAreaChangeWidth($(this)[0]);
             advTextAreaChange($(this)[0]);
         });
-
+        
         $('.advTextArea').keyup(function(event) {
             if (event.which == 8 || event.which == 46) {
                 advTextAreaChangeHeight($(this)[0],event);              
@@ -28,7 +25,12 @@ function advTextArea(saveFunction) {
                 advTextAreaReset($(this)[0]);
             }
             advTextAreaChange($(this)[0]);
+        }); 
+        
+        $('.advTextAreaSave').click(function(){
+            saveAdvTextArea($(this).parent().children('.advTextArea')[0]);
         });
+        
         advTextAreaSetMinSize();
     });
     
@@ -63,18 +65,22 @@ function advTextArea(saveFunction) {
     function advTextAreaChange(advTextArea) {
         if (advTextArea.value != $('#advTextAreaBackground'+advTextArea.id).html().replace('<br>', '\n')) {
             $('#advTextAreaBackground'+advTextArea.id).hide();
+            $('#advTextAreaSave'+advTextArea.id).css('display', 'inline-block');
+        }else {
+            $('#advTextAreaSave'+advTextArea.id).css('display', 'none');
         }
         if (advTextArea.value == '') {
             $('#advTextAreaBackground'+advTextArea.id).show();
+            
         }
     }
 
     function advTextAreaBlur(advTextArea) {
         if (advTextArea.value == '') {
             advTextArea.value = $('#advTextAreaBackground'+advTextArea.id).html().replace('<br>', '\n');
-            $('#advTextAreaBackground'+advTextArea.id).show();
             advTextAreaSetMinSize();
         }
+        $('#advTextAreaBackground'+advTextArea.id).hide();
     }
      
     function advTextAreaReset(advTextArea) {
@@ -95,7 +101,7 @@ function advTextArea(saveFunction) {
     }
 
     function saveAdvTextArea(advTextArea) {
-        $('#advTextAreaBackground'+advTextArea.id).html($('#advTextArea'+advTextArea.id).val().replace('\n','<br>'));
+        $('#advTextAreaBackground'+advTextArea.id).html($('#'+advTextArea.id).val().replace('\n','<br>'));
         advTextAreaSetMinSize();
         saveFunction(advTextArea);
         advTextArea.blur();
